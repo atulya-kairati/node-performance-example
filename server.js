@@ -22,17 +22,7 @@ app.get('/', (req, res) => {
     res.send(`Get off my lawn. ${process.pid}`)
 })
 
-if (cluster.isMaster) {
-    console.log("Master process was born.");
 
-    const MAX_WORKERS = os.cpus().length
-    for (let index = 0; index < MAX_WORKERS; index++) {
-        cluster.fork()
-    }
-} else {
-    console.log("Worker process was born.");
-    app.listen(8000, () => {
-        console.log(`Worker ${process.pid} listening...`);
-    })
-}
-
+app.listen(8000, () => {
+    console.log(`listening...`);
+})

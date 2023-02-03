@@ -122,3 +122,48 @@ if (cluster.isMaster) {
 }
 ```
 ***
+
+### PM2 module
+
+- Build on top of `cluster`.
+- Makes it simpler to create workers.
+- With the help of `pm2` we not need to explicitly write JS to create/manage workers.
+- `pm2` will manage that for us. 
+
+- Installation:
+```sh
+npm i pm2
+
+# recommended to install as a global dep.
+npm i pm2 -g
+```
+
+- Usage (check docs for details): 
+```sh
+# Start server without workers
+pm2 start app.js
+pm2 start name # if pm2 already has a process
+
+# list current node processes
+pm2 ls
+pm2 list
+pm2 status
+
+# stop a process
+pm2 stop id|name
+
+# delete a process
+pm2 delete id|name
+
+# creating worker instance
+pm2 start app.js -i 2 # creates 2 workers
+pm2 start app.js -i max # creates max workers (=logical cores)
+
+# see logs
+pm2 logs # it is preserved by default by pm2
+pm2 logs --lines 50 # last 50 lines of the logs
+
+# restart server
+pm2 restart name
+
+```
