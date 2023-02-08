@@ -166,4 +166,13 @@ pm2 logs --lines 50 # last 50 lines of the logs
 # restart server
 pm2 restart name
 
+
+# Start with logs
+pm2 start server.js -l logs.txt -i max
+
+# To open the monitor
+pm2 monit
+
+# For zero downtime restart
+pm2 reload name
 ```
