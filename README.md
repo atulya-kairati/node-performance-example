@@ -176,3 +176,6 @@ pm2 monit
 # For zero downtime restart
 pm2 reload name
 ```
+
+**NOTE**
+> When running a cluster make sure the servers are *Stateless*. Since each cluster runs seperately so any change in the state on one server instance will not be reflected on the rest. Leading to unwant beahviour and errors.
